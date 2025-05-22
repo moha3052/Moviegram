@@ -1,7 +1,11 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
+import React, {FC} from "react";
 
-const ButtonComponent = ({ titel }) => {
+interface Props {
+    titel: string;
+}
+
+const ButtonComponent: FC<Props> = ({ titel }) => {
   return (
     <TouchableOpacity>
       <Text>{titel}</Text>

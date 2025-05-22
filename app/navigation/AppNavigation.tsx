@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text, View } from "react-native";
 import Home from "../screens/HomeScreen";
 import Create from "../screens/CreateScreen";
 import Profile from "../screens/ProfileScreen";
