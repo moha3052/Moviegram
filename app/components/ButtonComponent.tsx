@@ -4,22 +4,15 @@ import { useNavigation } from "@react-navigation/native";
 
 interface Props {
   titel: String;
+  onPress?: () => any;
 }
 
-const ButtonComponent: FC<Props> = ({ titel }) => {
+const ButtonComponent: FC<Props> = ({ titel, onPress }) => {
   const navigation: any = useNavigation();
-
-  const handlePress = () => {
-    if (titel.toLowerCase() === "login") {
-      navigation.navigate("hjem"); // skærmen skal eksistere i din Stack.Navigator
-    }
-    // du kan tilføje flere if-statements her for fx "SignUp"
-  };
-
   return (
     <TouchableOpacity
       className="h-12 bg-blue-500 rounded-3xl ml-3 mr-3"
-      onPress={handlePress}
+      onPress={onPress}
     >
       <Text className="text-center mt-3 text-white">{titel}</Text>
     </TouchableOpacity>
