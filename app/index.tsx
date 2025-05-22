@@ -1,6 +1,6 @@
 import react from "react";
-import LogIn from "./screens/LogInScreen";
+import Navigation from "./navigation/AppNavigation";
 
 export default function Tabs() {
-  return <LogIn />;
+  return <Navigation />;
 }
