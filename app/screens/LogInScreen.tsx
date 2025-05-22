@@ -17,6 +17,10 @@ const LogInScreen = () => {
     navigation.navigate("app");
   };
 
+  const handleSignup = () => {
+    navigation.navigate("signup");
+  };
+
   return (
     <View className="bg-white justify-center items-center flex-1">
       <Text className="font-bold mb-10 text-5xl">Moviegram</Text>
@@ -36,7 +40,7 @@ const LogInScreen = () => {
         </View>
 
         <View className="mt-8">
-          <Button titel={"SignUp"} />
+          <Button titel={"SignUp"} onPress={handleSignup} />
         </View>
       </View>
     </View>
