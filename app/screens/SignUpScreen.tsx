@@ -1,11 +1,14 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
-import { auth } from "../../firebase";
+import { auth, database } from "../../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { useNavigation } from "expo-router";
 
 function SignUpScreen() {
   const router = useRouter();
+  const navigation: any = useNavigation();
 
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -29,7 +32,16 @@ function SignUpScreen() {
           displayName: username,
         });
       }
-      router.replace("/screens/LogInScreen");
+      try {
+        addDoc(collection(database, "bruger"), {
+          brugernavn: username,
+          password: password,
+        });
+      } catch (error) {
+        console.log("fejl i db" + error);
+      }
+
+      navigation.navigate("login");
     } catch (error) {
       alert(error);
     }
