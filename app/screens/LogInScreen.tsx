@@ -1,21 +1,43 @@
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import React, { useState } from "react";
 import Button from "../components/ButtonComponent";
 import TextInput from "../components/TextInputComponent";
-import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LogInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       alert("Udfyld både e-mail og password");
       return;
     }
-    router.replace("/screens/HomeScreen");
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log("Logget ind som:", user.displayName);
+      router.replace("../navigation/AppNavigation");
+    } catch (error: any) {
+      let message = "";
+      if (error.code === "auth/user-not-found") {
+        message = "Brugeren findes ikke";
+      } else if (error.code === "auth/wrong-password") {
+        message = "Forkert password";
+      } else if (error.code === "auth/invalid-email") {
+        message = "Ugyldig e-mailadresse";
+      }
+
+      alert(error);
+    }
   };
 
   const handleSignup = () => {
@@ -28,12 +50,12 @@ const LogInScreen = () => {
       <View className=" bg-gray-200 h-3/5 w-96 rounded-xl">
         <Text className="font-semibold text-center mt-5 text-3xl">Login</Text>
         <Text className="mt-14 ml-5 text-xl"> E-mail</Text>
-        <TextInput placeholder="E-mail" value={email} onChange={setEmail} />
+        <TextInput placeholder="E-mail" value={email} onChangeText={setEmail} />
         <Text className="mt-12 ml-5 text-xl"> password</Text>
         <TextInput
           placeholder="Password"
           value={password}
-          onChange={setPassword}
+          onChangeText={setPassword}
           secureTextEntry
         />
         <View className="mt-12">

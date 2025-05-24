@@ -1,6 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { Component, FC } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { FC } from "react";
 
 interface Props {
   titel: String;
@@ -8,13 +7,14 @@ interface Props {
 }
 
 const ButtonComponent: FC<Props> = ({ titel, onPress }) => {
-  const navigation: any = useNavigation();
   return (
     <TouchableOpacity
-      className="h-12 bg-blue-500 rounded-3xl ml-3 mr-3"
+      className="bg-blue-500 py-3 rounded-xl ml-3 mr-3"
       onPress={onPress}
     >
-      <Text className="text-center mt-3 text-white">{titel}</Text>
+      <Text className="text-white text-center text-lg font-semibold">
+        {titel}
+      </Text>
     </TouchableOpacity>
   );
 };

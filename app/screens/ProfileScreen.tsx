@@ -2,8 +2,11 @@ import { Text, View } from "react-native";
 
 function ProfileScreen() {
   return (
-    <View className="flex-1 justify-center items-center bg-white">
-      <Text className="text-xl">Min profil</Text>
+    <View className="flex-1 items-center bg-gray-200">
+      <Text className="text-xl text-left mt-12">{user}</Text>
+      <View className="bg-white h-full mt-12 w-full">
+        <Text>hej</Text>
+      </View>
     </View>
   );
 }
