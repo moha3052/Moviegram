@@ -5,11 +5,14 @@ import TextInput from "../components/TextInputComponent";
 import { useRouter } from "expo-router";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "expo-router";
 
 const LogInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
+  const navigation: any = useNavigation();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -25,7 +28,7 @@ const LogInScreen = () => {
       );
       const user = userCredential.user;
       console.log("Logget ind som:", user.displayName);
-      router.replace("../navigation/AppNavigation");
+      navigation.navigate("app");
     } catch (error: any) {
       let message = "";
       if (error.code === "auth/user-not-found") {
@@ -41,7 +44,7 @@ const LogInScreen = () => {
   };
 
   const handleSignup = () => {
-    router.replace("/screens/SignUpScreen");
+    navigation.navigate("sign");
   };
 
   return (
