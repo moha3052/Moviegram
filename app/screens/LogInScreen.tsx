@@ -3,22 +3,23 @@ import React, { useState } from "react";
 import Button from "../components/ButtonComponent";
 import TextInput from "../components/TextInputComponent";
 import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 
 const LogInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleLogin = () => {
     if (!email || !password) {
       alert("Udfyld både e-mail og password");
       return;
     }
-    navigation.navigate("app");
+    router.replace("/screens/HomeScreen");
   };
 
   const handleSignup = () => {
-    navigation.navigate("signup");
+    router.replace("/screens/SignUpScreen");
   };
 
   return (
