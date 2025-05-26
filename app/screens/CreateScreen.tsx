@@ -2,6 +2,7 @@ import {Text, View, TextInput, TouchableOpacity, Alert, Image, ScrollView} from 
 import {useState} from "react";
 import * as ImagePicker from 'expo-image-picker';
 import { StarIcon } from 'react-native-heroicons/solid';
+import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore"
 
@@ -19,12 +20,17 @@ function CreateScreen() {
         }
 
         try {
+            const auth = getAuth();
+            const user = auth.currentUser;
+
             // Tilføj et nyt dokument i 'ratings' samlingen
             await addDoc(collection(db, "ratings"), {
                 title,
                 imageUrl,
                 rating,
-                createdAt: new Date()
+                createdAt: new Date(),
+                userId: user?.uid,
+                userName: user?.displayName || "Ukendt"
             });
 
             Alert.alert("Succes", "Din bedømmelse er gemt!");
