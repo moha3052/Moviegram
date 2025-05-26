@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import React, { FC } from "react";
 
 interface Props {
@@ -8,14 +8,15 @@ interface Props {
 
 const ButtonComponent: FC<Props> = ({ titel, onPress }) => {
   return (
-    <TouchableOpacity
-      className="bg-blue-500 py-3 rounded-xl ml-3 mr-3"
-      onPress={onPress}
-    >
-      <Text className="text-white text-center text-lg font-semibold">
-        {titel}
-      </Text>
-    </TouchableOpacity>
+      <TouchableOpacity
+          className="bg-blue-600 mx-4 py-3 rounded-xl shadow-md active:bg-blue-700"
+          onPress={onPress}
+      >
+        <Text className="text-white text-center text-lg font-semibold">
+          {titel}
+        </Text>
+      </TouchableOpacity>
+
   );
 };
 

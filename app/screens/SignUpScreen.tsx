@@ -1,7 +1,8 @@
-import { Text, TextInput, TouchableOpacity, View, ScrollView } from "react-native";
+import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import React, { useState } from "react";
-import { useRouter } from "expo-router";
+import TextInput from "../components/TextInputComponent";
 import { auth } from "../../firebase";
+import Button from "../components/ButtonComponent";
 import { useNavigation } from "expo-router";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
@@ -55,15 +56,13 @@ function SignUpScreen() {
 
             <Text className="text-lg mb-1">Brugernavn</Text>
             <TextInput
-                className="bg-white rounded px-4 py-2 mb-4"
                 placeholder="Indtast brugernavn"
                 value={username}
                 onChangeText={setUsername}
             />
 
-            <Text className="text-lg mb-1">Email</Text>
+            <Text className="text-lg mb-1 mt-2">Email</Text>
             <TextInput
-                className="bg-white rounded px-4 py-2 mb-4"
                 placeholder="Indtast email"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -71,23 +70,17 @@ function SignUpScreen() {
                 onChangeText={setEmail}
             />
 
-            <Text className="text-lg mb-1">Adgangskode</Text>
+            <Text className="text-lg mb-1 mt-2">Adgangskode</Text>
             <TextInput
-                className="bg-white rounded px-4 py-2 mb-6"
                 placeholder="Indtast adgangskode"
                 secureTextEntry
                 value={password}
                 onChangeText={setPassword}
             />
 
-            <TouchableOpacity
-                className="bg-blue-500 py-3 rounded-xl"
-                onPress={handleSignup}
-            >
-              <Text className="text-white text-center text-lg font-semibold">
-                Opret konto
-              </Text>
-            </TouchableOpacity>
+            <View className=" mt-5">
+            <Button  titel={"Opret konto"} onPress={handleSignup}/>
+            </View>
 
             <TouchableOpacity onPress={BackToLogin}>
               <Text className="text-blue-500 text-center mt-4 underline">

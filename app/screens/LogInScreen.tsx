@@ -1,4 +1,4 @@
-import { View, Text, Alert, ScrollView} from "react-native";
+import {View, Text, Alert, ScrollView, TouchableOpacity} from "react-native";
 import React, { useState } from "react";
 import Button from "../components/ButtonComponent";
 import TextInput from "../components/TextInputComponent";
@@ -50,30 +50,41 @@ const LogInScreen = () => {
           keyboardShouldPersistTaps="handled"
           className="bg-neutral-100"
       >
-        <View className="bg-white justify-center items-center flex-1">
-          <Text className="font-bold mb-10 text-5xl">Moviegram</Text>
-          <View className=" bg-gray-200 h-3/5 w-96 rounded-xl">
-            <Text className="font-semibold text-center mt-5 text-3xl">Login</Text>
-            <Text className="mt-14 ml-5 text-xl"> E-mail</Text>
-            <TextInput placeholder="E-mail" value={email} onChangeText={setEmail} />
-            <Text className="mt-12 ml-5 text-xl"> password</Text>
+        <View className="flex-1 bg-white justify-center items-center px-4">
+          <Text className="text-5xl font-bold mb-6 ">Moviegram</Text>
+          <View className="bg-gray-200 w-full max-w-md rounded-xl p-6 shadow-md">
+            <Text className="text-3xl text-center mb-6">Login</Text>
+
+            <Text className="text-lg mb-1">E-mail</Text>
             <TextInput
-                placeholder="Password"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-                type="password"
+                placeholder="Indtast e-mail"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
             />
 
-            <View className="mt-12">
-              <Button titel={"login"} onPress={handleLogin} />
-            </View>
+            <Text className="text-lg mt-3">Adgangskode</Text>
+            <TextInput
+                placeholder="Indtast adgangskode"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+            />
+
             <View className="mt-8">
-              <Button titel={"SignUp"} onPress={handleSignup} />
+              <Button titel="Login" onPress={handleLogin} />
             </View>
+
+            <TouchableOpacity onPress={handleSignup} className="mt-4">
+              <Text className= "text-center">
+                Har du ikke en konto? <Text className="text-blue-500 text-center underline">Opret dig</Text>
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
+
   );
 };
 

@@ -3,9 +3,14 @@ import React from "react";
 
 const TextInputComponent = ({ ...props }) => {
   return (
-    <View className="justify-center h-12 ml-3 mr-3 bg-gray-300 rounded-3xl mt-2 ">
-      <TextInput className="w-full h-12 ml-3" {...props}></TextInput>
-    </View>
+      <View className="bg-white rounded-xl px-4 py-2 mx-4 mt-3 shadow-sm border border-gray-300">
+          <TextInput
+              className="text-base text-gray-800"
+              placeholderTextColor="#A0AEC0"
+              {...props}
+          />
+      </View>
+
   );
 };
 
