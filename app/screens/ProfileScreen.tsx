@@ -37,7 +37,7 @@ function ProfileScreen() {
     >
       <View className="flex-1 items-center bg-gray-200">
         <Text className="text-xl text-left mt-12" onPress={Tjek}>
-          hej
+          {auth.currentUser?.displayName}
         </Text>
         <View className="bg-white h-full mt-12 w-full">
           <FlatList
