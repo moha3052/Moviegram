@@ -22,11 +22,9 @@ function CreateScreen() {
         try {
             const auth = getAuth();
             const user = auth.currentUser;
-
             // Tilføj et nyt dokument i 'ratings' samlingen
             await addDoc(collection(db, "ratings"), {
                 title,
-                imageUrl,
                 rating,
                 createdAt: new Date(),
                 userId: user?.uid,

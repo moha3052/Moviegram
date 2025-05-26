@@ -67,6 +67,7 @@ const LogInScreen = () => {
                 secureTextEntry
                 type="password"
             />
+
             <View className="mt-12">
               <Button titel={"login"} onPress={handleLogin} />
             </View>

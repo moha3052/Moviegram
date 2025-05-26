@@ -30,16 +30,12 @@ function ProfileScreen() {
     console.log(data);
   }
   return (
-    <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
-      keyboardShouldPersistTaps="handled"
-      className="bg-neutral-100"
-    >
       <View className="flex-1 items-center bg-gray-200">
-        <Text className="text-xl text-left mt-12" onPress={Tjek}>
-          {auth.currentUser?.displayName}
+        <Text className="text-xl text-left mt-20 " onPress={Tjek}>
+          Bruger Navn: {auth.currentUser?.displayName}
         </Text>
         <View className="bg-white h-full mt-12 w-full">
+            <Text className="text-center mt-4 text-2xl font-semibold">Mine film bedømmelser: </Text>
           <FlatList
             data={data?.filter(
               (item) => item.userName === auth.currentUser?.displayName
@@ -69,7 +65,6 @@ function ProfileScreen() {
           />
         </View>
       </View>
-    </ScrollView>
   );
 }
 
