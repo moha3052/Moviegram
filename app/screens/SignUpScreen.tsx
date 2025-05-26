@@ -6,7 +6,6 @@ import { useNavigation } from "expo-router";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 function SignUpScreen() {
-  const router = useRouter();
   const navigation: any = useNavigation();
 
   const [username, setUsername] = useState<string>("");

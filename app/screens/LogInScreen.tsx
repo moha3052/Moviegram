@@ -2,7 +2,6 @@ import { View, Text, Alert, ScrollView} from "react-native";
 import React, { useState } from "react";
 import Button from "../components/ButtonComponent";
 import TextInput from "../components/TextInputComponent";
-import { useRouter } from "expo-router";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "expo-router";
@@ -10,7 +9,6 @@ import { useNavigation } from "expo-router";
 const LogInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
 
   const navigation: any = useNavigation();
 
@@ -38,7 +36,6 @@ const LogInScreen = () => {
       } else if (error.code === "auth/invalid-email") {
         message = "Ugyldig e-mailadresse";
       }
-
       alert(error);
     }
   };
