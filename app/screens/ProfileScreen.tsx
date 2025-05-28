@@ -103,7 +103,6 @@ function ProfileScreen() {
         data={data?.filter(
           (item) => item.userName === auth.currentUser?.displayName
         )}
-        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View className="bg-gray-50 rounded-xl p-4 mb-4 shadow-sm">
             <View className="flex-row mb-2">
